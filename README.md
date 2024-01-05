@@ -9,7 +9,7 @@ The official code an data for the benchmark with baselines for our paper: [Cam4D
 Coming soon ...
 
 ## TODO
-- [X] Release the paper: [Cam4DOcc: Benchmark for Camera-Only 4D Occupancy Forecasting in Autonomous Driving Applications](https://arxiv.org/abs/2311.17663)
+- [X] Release the [paper](https://arxiv.org/abs/2311.17663)
 - [ ] Release the code for data generation as well as the holistic dataset used in Cam4DOcc
 - [ ] Release the code for the standard training scheme and evaluation protocol in Cam4DOcc
 - [ ] Release our pretrained baseline model
