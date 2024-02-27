@@ -68,7 +68,9 @@ python setup.py develop
 ```
 ### Data Structure
 
-Please link your [nuScenes V1.0 full dataset ](https://www.nuscenes.org/nuscenes#download) to the data folder. [nuScenes-Occupancy](https://drive.google.com/file/d/1vTbgddMzUN6nLyWSsCZMb9KwihS7nPoH/view?usp=sharing), [nuscenes_occ_infos_train.pkl](https://github.com/JeffWang987/OpenOccupancy/releases/tag/train_pkl), and [nuscenes_occ_infos_val.pkl](https://github.com/JeffWang987/OpenOccupancy/releases/tag/val_pkl) are also provided by the previous work. If you only want to reproduce the forecasting results with "inflated" form, nuScenes dataset is all you need.
+Please link your [nuScenes V1.0 full dataset ](https://www.nuscenes.org/nuscenes#download) to the data folder. [nuScenes-Occupancy](https://drive.google.com/file/d/1vTbgddMzUN6nLyWSsCZMb9KwihS7nPoH/view?usp=sharing), [nuscenes_occ_infos_train.pkl](https://github.com/JeffWang987/OpenOccupancy/releases/tag/train_pkl), and [nuscenes_occ_infos_val.pkl](https://github.com/JeffWang987/OpenOccupancy/releases/tag/val_pkl) are also provided by the previous work. If you only want to reproduce the forecasting results with "inflated" form, nuScenes dataset and Cam4DOcc are all you need.
+
+Note that the folders under `cam4docc` will be generated automatically once you first run our training or evaluation scripts.
 
 ```bash
 Cam4DOcc
@@ -83,12 +85,21 @@ Cam4DOcc
 │   │   ├── nuscenes_occ_infos_train.pkl/
 │   │   ├── nuscenes_occ_infos_val.pkl/
 │   ├── nuScenes-Occupancy/
+│   ├── cam4docc
+│   │   ├── segmentation/
+│   │   ├── instance/
+│   │   ├── flow/
 ```
-## Training and Evalaution
+## Training and Evaluation
+
+We directly integrate the Cam4DOcc dataset generation pipeline into the dataloader, so you can directly run train or evaluate scripts and just wait :smirk:
+
+Optionally, you can set `only_generate_dataset=True` in `Cam4DOcc/projects/configs/baselines/OCFNet_in_Cam4DOcc_V1.x.py` to only generate the Cam4DOcc data.
 
 ### Train OCFNetV1.1 with 8 GPUs
 
 OCFNetV1.1 can forecast inflated GMO and others. In this case, _vehicle_ and _human_ are considered as one unified category.
+
 ```bash
 bash run.sh ./projects/configs/baselines/OCFNet_in_Cam4DOcc_V1.1.py 8
 ```
