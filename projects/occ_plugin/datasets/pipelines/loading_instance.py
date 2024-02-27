@@ -269,13 +269,23 @@ class LoadInstanceWithFlow(object):
         assert 'attribute_label' not in results.keys()
 
         time_receptive_field = results['time_receptive_field']
-        seg_label_path = os.path.join(self.cam4docc_dataset_path, "segmentation", \
+
+        seg_label_dir = os.path.join(self.cam4docc_dataset_path, "segmentation")
+        if not os.path.exists(seg_label_dir):
+            os.makedirs(seg_label_dir)
+        seg_label_path = os.path.join(seg_label_dir, \
             results['input_dict'][time_receptive_field-1]['scene_token']+"_"+results['input_dict'][time_receptive_field-1]['lidar_token'])
-        
-        instance_label_path = os.path.join(self.cam4docc_dataset_path, "instance", \
+
+        instance_label_dir = os.path.join(self.cam4docc_dataset_path, "instance")
+        if not os.path.exists(instance_label_dir):
+            os.makedirs(instance_label_dir)
+        instance_label_path = os.path.join(instance_label_dir, \
             results['input_dict'][time_receptive_field-1]['scene_token']+"_"+results['input_dict'][time_receptive_field-1]['lidar_token'])
-        
-        flow_label_path = os.path.join(self.cam4docc_dataset_path, "flow", \
+
+        flow_label_dir = os.path.join(self.cam4docc_dataset_path, "flow")
+        if not os.path.exists(flow_label_dir):
+            os.makedirs(flow_label_dir)        
+        flow_label_path = os.path.join(flow_label_dir, \
             results['input_dict'][time_receptive_field-1]['scene_token']+"_"+results['input_dict'][time_receptive_field-1]['lidar_token'])
 
         segmentation_list = []
