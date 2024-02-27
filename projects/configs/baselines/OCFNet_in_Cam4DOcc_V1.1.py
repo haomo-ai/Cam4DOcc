@@ -23,8 +23,8 @@ occ_path = "./data/nuScenes-Occupancy"
 depth_gt_path = './data/depth_gt'
 train_ann_file = "./data/nuscenes/nuscenes_occ_infos_train.pkl"
 val_ann_file = "./data/nuscenes/nuscenes_occ_infos_val.pkl"
-cam4docc_dataset_path = "/mnt/share_disk/mjy/"
-nusc_root = 'data/nuscenes/'
+cam4docc_dataset_path = "./data/cam4docc/"
+nusc_root = './data/nuscenes/'
 # GMO class names
 class_names = ['vehicle', 'human']
 use_separate_classes = False
