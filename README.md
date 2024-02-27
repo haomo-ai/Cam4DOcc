@@ -131,7 +131,7 @@ Some basic information as well as key parameters for our current version.
 | voxel size      | 0.2m | voxel_x/y/z |
 | range           | [-51.2m, -51.2m, -5m, 51.2m, 51.2m, 3m]| point_cloud_range |
 | volume size     | [512, 512, 40]| occ_size |
-| classes         | 2 for V1.1)/9 for V1.2 | num_cls |
+| classes         | 2 for V1.1 / 9 for V1.2 | num_cls |
 | observation frames | 3 | time_receptive_field |
 | future frames | 4 | n_future_frames |
 | extension frames | 6 | n_future_frames_plus |
