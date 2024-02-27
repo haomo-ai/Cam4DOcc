@@ -23,6 +23,7 @@ If you use Cam4DOcc in an academic work, please cite our paper:
 
 ## TODO
 - [X] Release the [paper](https://arxiv.org/abs/2311.17663)
+- [X] Release the code for our Cam4DOcc method
 - [ ] Release the code for data generation as well as the holistic dataset used in Cam4DOcc
 - [ ] Release the code for the standard training scheme and evaluation protocol in Cam4DOcc
 - [ ] Release our pretrained baseline model
