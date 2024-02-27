@@ -14,11 +14,12 @@ This work has been accepted by CVPR 2024 :tada:
 If you use Cam4DOcc in an academic work, please cite our paper:
 
 	@inproceedings{ma2024cvpr,
- 	  title={Cam4DOcc: Benchmark for Camera-Only 4D Occupancy Forecasting in Autonomous Driving Applications}, 
-   	  author={Junyi Ma and Xieyuanli Chen and Jiawei Huang and Jingyi Xu and Zhen Luo and Jintao Xu and Weihao Gu and Rui Ai and Hesheng Wang},
-     	  booktitle = {Proc.~of the IEEE/CVF Conf.~on Computer Vision and Pattern Recognition (CVPR)},
-       	  year = 2024
+		author = {Junyi Ma and Xieyuanli Chen and Jiawei Huang and Jingyi Xu and Zhen Luo and Jintao Xu and Weihao Gu and Rui Ai and Hesheng Wang},
+		title = {{Cam4DOcc: Benchmark for Camera-Only 4D Occupancy Forecasting in Autonomous Driving Applications}},
+		booktitle = {Proc.~of the IEEE/CVF Conf.~on Computer Vision and Pattern Recognition (CVPR)},
+		year = 2024
 	}
+ 
 
 ## TODO
 - [X] Release the [paper](https://arxiv.org/abs/2311.17663)
