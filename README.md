@@ -124,6 +124,7 @@ bash run_eval.sh $PATH_TO_CFG $PATH_TO_CKPT $GPU_NUM
 
 Some basic information as well as key parameters for our current version.
 
+| Type |  Info | Parameter |
 | :----: | :----: | :----: |
 | train           | 23,930 sequences | train_capacity |
 | val             | 5,119 frames | test_capacity |
