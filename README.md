@@ -68,7 +68,9 @@ python setup.py develop
 ```
 ### Data Structure
 
-Please link your [nuScenes V1.0 full dataset ](https://www.nuscenes.org/nuscenes#download) to the data folder. [nuScenes-Occupancy](https://drive.google.com/file/d/1vTbgddMzUN6nLyWSsCZMb9KwihS7nPoH/view?usp=sharing), [nuscenes_occ_infos_train.pkl](https://github.com/JeffWang987/OpenOccupancy/releases/tag/train_pkl), and [nuscenes_occ_infos_val.pkl](https://github.com/JeffWang987/OpenOccupancy/releases/tag/val_pkl) are also provided by the previous work. If you only want to reproduce the forecasting results with "inflated" form, nuScenes dataset and Cam4DOcc are all you need.
+Please link your [nuScenes V1.0 full dataset ](https://www.nuscenes.org/nuscenes#download) to the data folder. 
+
+[nuScenes-Occupancy](https://drive.google.com/file/d/1vTbgddMzUN6nLyWSsCZMb9KwihS7nPoH/view?usp=sharing), [nuscenes_occ_infos_train.pkl](https://github.com/JeffWang987/OpenOccupancy/releases/tag/train_pkl), and [nuscenes_occ_infos_val.pkl](https://github.com/JeffWang987/OpenOccupancy/releases/tag/val_pkl) are also provided by the previous work. If you only want to reproduce the forecasting results with "inflated" form, nuScenes dataset and Cam4DOcc are all you need.
 
 Note that the folders under `cam4docc` will be generated automatically once you first run our training or evaluation scripts.
 
@@ -94,7 +96,7 @@ Cam4DOcc
 
 We directly integrate the Cam4DOcc dataset generation pipeline into the dataloader, so you can directly run train or evaluate scripts and just wait :smirk:
 
-Optionally, you can set `only_generate_dataset=True` in `Cam4DOcc/projects/configs/baselines/OCFNet_in_Cam4DOcc_V1.x.py` to only generate the Cam4DOcc data.
+Optionally, you can set `only_generate_dataset=True` in `Cam4DOcc/projects/configs/baselines/OCFNet_in_Cam4DOcc_V1.x.py` to only generate the Cam4DOcc data without model training and inference.
 
 ### Train OCFNetV1.1 with 8 GPUs
 
@@ -117,6 +119,21 @@ bash run.sh ./projects/configs/baselines/OCFNet_in_Cam4DOcc_V1.2.py 8
 bash run_eval.sh $PATH_TO_CFG $PATH_TO_CKPT $GPU_NUM
 # e.g. bash run_eval.sh ./projects/configs/baselines/OCFNet_in_Cam4DOcc_V1.1.py ./work_dirs/OCFNet_in_Cam4DOcc_V1.1/epoch_20.pth  8
 ```
+
+### Basic information
+
+Some basic information as well as key parameters for our current version.
+
+| :----: | :----: | :----: |
+| train           | 23,930 sequences | train_capacity |
+| val             | 5,119 frames | test_capacity |
+| voxel size      | 0.2m | voxel_x/y/z |
+| range           | [-51.2m, -51.2m, -5m, 51.2m, 51.2m, 3m]| point_cloud_range |
+| volume size     | [512, 512, 40]| occ_size |
+| classes         | 2 for V1.1)/9 for V1.2 | num_cls |
+| observation frames | 3 | time_receptive_field |
+| future frames | 4 | n_future_frames |
+| extension frames | 6 | n_future_frames_plus |
 
 ## TODO
 The tutorial is being refined ...
