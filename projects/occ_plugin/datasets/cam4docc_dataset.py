@@ -18,7 +18,7 @@ import time
 
 @DATASETS.register_module()
 class Cam4DOccDataset(NuScenesDataset):
-    def __init__(self, occ_size, pc_range, occ_root, time_receptive_field, n_future_frames, classes, use_separate_classes,
+    def __init__(self, occ_size, pc_range, occ_root, idx_root, time_receptive_field, n_future_frames, classes, use_separate_classes,
                   train_capacity, test_capacity , **kwargs):
         
         '''
@@ -27,6 +27,7 @@ class Cam4DOccDataset(NuScenesDataset):
         occ_size: number of grids along H W L, default: [512, 512, 40]
         pc_range: predefined ranges along H W L, default: [-51.2, -51.2, -5.0, 51.2, 51.2, 3.0]
         occ_root: data path of nuScenes-Occupancy
+        idx_root: save path of test indexes
         time_receptive_field: number of historical frames used for forecasting (including the present one), default: 3
         n_future_frames: number of forecasted future frames, default: 4
         classes: predefiend categories in GMO
@@ -56,6 +57,7 @@ class Cam4DOccDataset(NuScenesDataset):
         self.occ_size = occ_size
         self.pc_range = pc_range
         self.occ_root = occ_root
+        self.idx_root = idx_root
         self.classes = classes
         self.use_separate_classes = use_separate_classes
 
@@ -351,6 +353,13 @@ class Cam4DOccDataset(NuScenesDataset):
             scene_lidar_token.append(input_dict_per_frame['scene_token']+"_"+input_dict_per_frame['lidar_token'])
             if self.counter == self.time_receptive_field - 1:
                 self.present_scene_lidar_token = input_dict_per_frame['scene_token']+"_"+input_dict_per_frame['lidar_token']
+
+        # save sequential test indexes for possible evaluation
+        if self.test_mode:
+            test_idx_path = os.path.join(self.idx_root, "test_ids")
+            if not os.path.exists(test_idx_path):
+                os.mkdir(test_idx_path)
+            np.savez(os.path.join(test_idx_path, self.present_scene_lidar_token), scene_lidar_token)
 
         for token in self.instance_dict.keys():
             self.instance_dict[token] = self.refine_instance_poly(self.instance_dict[token])
