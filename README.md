@@ -25,33 +25,33 @@ If you use Cam4DOcc in an academic work, please cite our paper:
 We follow the installation instructions of our codebase [OpenOccupancy](https://github.com/JeffWang987/OpenOccupancy/blob/main/docs/install.md), which are also posted here:
 
 * Create a conda virtual environment and activate it
-```
+```bash
 conda create -n OpenOccupancy python=3.7 -y
 conda activate OpenOccupancy
 ```
 * Install PyTorch and torchvision (tested on torch==1.10.1 & cuda=11.3)
-```
+```bash
 conda install pytorch==1.10.1 torchvision==0.11.2 torchaudio==0.10.1 cudatoolkit=11.3 -c pytorch -c conda-forge
 ```
 * Install gcc>=5 in conda env
-```
+```bash
 conda install -c omgarcia gcc-6
 ```
 * Install mmcv, mmdet, and mmseg
-```
+```bash
 pip install mmcv-full==1.4.0
 pip install mmdet==2.14.0
 pip install mmsegmentation==0.14.1
 ```
 * Install mmdet3d from the source code
-```
+```bash
 git clone https://github.com/open-mmlab/mmdetection3d.git
 cd mmdetection3d
 git checkout v0.17.1 # Other versions may not be compatible.
 python setup.py install
 ```
 * Install other dependencies
-```
+```bash
 pip install timm
 pip install open3d-python
 pip install PyMCubes
@@ -134,7 +134,7 @@ Please set `save_pred` and `save_path` in the config files once saving predictio
 
 Please install the dependencies as follows:
 
-```
+```bash
 sudo apt-get install Xvfb
 pip install xvfbwrapper
 pip install mayavi
