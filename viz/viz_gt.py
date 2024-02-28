@@ -1,3 +1,7 @@
+# Developed by Junyi Ma
+# Cam4DOcc: Benchmark for Camera-Only 4D Occupancy Forecasting in Autonomous Driving Applications
+# https://github.com/haomo-ai/Cam4DOcc
+
 from tqdm import tqdm
 import pickle
 import numpy as np
@@ -6,6 +10,7 @@ from tqdm import trange
 import os
 from xvfbwrapper import Xvfb
 
+# export QT_QPA_PLATFORM='offscreen' 
 mlab.options.offscreen = True
 
 def viz_occ(occ, occ_mo, file_name, voxel_size, show_occ, show_time_change):
@@ -127,4 +132,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-    # export QT_QPA_PLATFORM='offscreen' 

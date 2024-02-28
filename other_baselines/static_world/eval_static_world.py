@@ -1,3 +1,7 @@
+# Developed by Junyi Ma
+# Cam4DOcc: Benchmark for Camera-Only 4D Occupancy Forecasting in Autonomous Driving Applications
+# https://github.com/haomo-ai/Cam4DOcc
+
 import numpy as np
 import os
 import copy
