@@ -66,7 +66,7 @@ cd Cam4DOcc
 export PYTHONPATH=“.”
 python setup.py develop
 ```
-### Data Structure
+## Data Structure
 
 Please link your [nuScenes V1.0 full dataset ](https://www.nuscenes.org/nuscenes#download) to the data folder. 
 
@@ -155,7 +155,7 @@ python viz_gt.py
 coming soon ...
 ```
 
-### Basic information
+## Basic information
 
 Some basic information as well as key parameters for our current version.
 
@@ -172,6 +172,10 @@ Some basic information as well as key parameters for our current version.
 | extension frames | 6 | n_future_frames_plus |
 
 Our proposed OCFNet can still perform well while being trained with partial data. Please try to decrease `train_capacity` if you want to explore more details with sparser supervision signals.
+
+## Other baselines
+
+We will gradually update [other baselines](https://github.com/haomo-ai/Cam4DOcc/tree/main/other_baselines) in Cam4DOcc.
 
 ## TODO
 The tutorial is being updated ...
