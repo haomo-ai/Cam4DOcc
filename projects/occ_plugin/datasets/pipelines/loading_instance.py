@@ -12,7 +12,7 @@ import time
 
 @PIPELINES.register_module()
 class LoadInstanceWithFlow(object):
-    def __init__(self, cam4docc_dataset_path, grid_size=[512, 512, 40], pc_range=[-51.2, -51.2, -5.0, 51.2, 51.2, 3.0], background=0, use_flow=True):
+    def __init__(self, cam4docc_dataset_path, grid_size=[512, 512, 40], pc_range=[-51.2, -51.2, -5.0, 51.2, 51.2, 3.0], background=0, use_flow=True, use_separate_classes=False):
         '''
         Loading sequential occupancy labels and instance flows for training and testing
 
@@ -37,6 +37,7 @@ class LoadInstanceWithFlow(object):
 
         self.background = background
         self.use_flow = use_flow
+        self.use_separate_classes = use_separate_classes
 
     def get_poly_region(self, instance_annotation, present_egopose, present_ego2lidar):
         """
@@ -270,21 +271,23 @@ class LoadInstanceWithFlow(object):
 
         time_receptive_field = results['time_receptive_field']
 
-        seg_label_dir = os.path.join(self.cam4docc_dataset_path, "segmentation")
+        prefix = "MMO" if self.use_separate_classes else "GMO"
+
+        seg_label_dir = os.path.join(self.cam4docc_dataset_path, prefix, "segmentation")
         if not os.path.exists(seg_label_dir):
-            os.makedirs(seg_label_dir)
+            os.mkdir(seg_label_dir)
         seg_label_path = os.path.join(seg_label_dir, \
             results['input_dict'][time_receptive_field-1]['scene_token']+"_"+results['input_dict'][time_receptive_field-1]['lidar_token'])
 
-        instance_label_dir = os.path.join(self.cam4docc_dataset_path, "instance")
+        instance_label_dir = os.path.join(self.cam4docc_dataset_path, prefix, "instance")
         if not os.path.exists(instance_label_dir):
-            os.makedirs(instance_label_dir)
+            os.mkdir(instance_label_dir)
         instance_label_path = os.path.join(instance_label_dir, \
             results['input_dict'][time_receptive_field-1]['scene_token']+"_"+results['input_dict'][time_receptive_field-1]['lidar_token'])
 
-        flow_label_dir = os.path.join(self.cam4docc_dataset_path, "flow")
+        flow_label_dir = os.path.join(self.cam4docc_dataset_path, prefix, "flow")
         if not os.path.exists(flow_label_dir):
-            os.makedirs(flow_label_dir)        
+            os.mkdir(flow_label_dir)        
         flow_label_path = os.path.join(flow_label_dir, \
             results['input_dict'][time_receptive_field-1]['scene_token']+"_"+results['input_dict'][time_receptive_field-1]['lidar_token'])
 

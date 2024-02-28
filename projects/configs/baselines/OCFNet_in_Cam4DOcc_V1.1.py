@@ -18,7 +18,7 @@ input_modality = dict(
     use_map=False,
     use_external=False)
 plugin = True
-plugin_dir = "./projects/occ_plugin/"
+plugin_dir = "projects/occ_plugin/"
 occ_path = "./data/nuScenes-Occupancy"
 depth_gt_path = './data/depth_gt'
 train_ann_file = "./data/nuscenes/nuscenes_occ_infos_train.pkl"
@@ -79,7 +79,8 @@ bda_aug_conf = dict(
 train_capacity = 23930 # default: use all sequences
 test_capacity = 5119 # default: use all sequences
 train_pipeline = [
-    dict(type='LoadInstanceWithFlow', cam4docc_dataset_path=cam4docc_dataset_path, grid_size=occ_size, use_flow=True, background=empty_idx, pc_range=point_cloud_range),
+    dict(type='LoadInstanceWithFlow', cam4docc_dataset_path=cam4docc_dataset_path, grid_size=occ_size, use_flow=True, background=empty_idx, pc_range=point_cloud_range,
+                use_separate_classes=use_separate_classes),
     dict(type='LoadMultiViewImageFromFiles_BEVDet', is_train=True, data_config=data_config,
                 sequential=False, aligned=True, trans_only=False, depth_gt_path=depth_gt_path,
                 mmlabnorm=True, load_depth=True, img_norm_cfg=img_norm_cfg),
@@ -89,7 +90,8 @@ train_pipeline = [
 ]
 
 test_pipeline = [
-    dict(type='LoadInstanceWithFlow', cam4docc_dataset_path=cam4docc_dataset_path, grid_size=occ_size, use_flow=True, background=empty_idx, pc_range=point_cloud_range),
+    dict(type='LoadInstanceWithFlow', cam4docc_dataset_path=cam4docc_dataset_path, grid_size=occ_size, use_flow=True, background=empty_idx, pc_range=point_cloud_range,
+         use_separate_classes=use_separate_classes),
     dict(type='LoadMultiViewImageFromFiles_BEVDet', data_config=data_config, depth_gt_path=depth_gt_path,
          sequential=False, aligned=True, trans_only=False, mmlabnorm=True, img_norm_cfg=img_norm_cfg, test_mode=True),
     dict(type='LoadOccupancy', to_float32=True, occ_path=occ_path, grid_size=occ_size, unoccupied=empty_idx, pc_range=point_cloud_range, use_fine_occ=use_fine_occ, test_mode=True),
