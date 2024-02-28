@@ -155,7 +155,7 @@ python viz_gt.py
 coming soon ...
 ```
 
-## Basic information
+## Basic Information
 
 Some basic information as well as key parameters for our current version.
 
@@ -173,7 +173,7 @@ Some basic information as well as key parameters for our current version.
 
 Our proposed OCFNet can still perform well while being trained with partial data. Please try to decrease `train_capacity` if you want to explore more details with sparser supervision signals.
 
-## Other baselines
+## Other Baselines
 
 We will gradually update [other baselines](https://github.com/haomo-ai/Cam4DOcc/tree/main/other_baselines) in Cam4DOcc.
 
