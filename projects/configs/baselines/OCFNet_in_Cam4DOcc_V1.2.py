@@ -162,7 +162,7 @@ pred_channels = [32, 32*2, 32*4, 32*8]
 decoder_channels = [32*(n_future_frames_plus), 32*2*(n_future_frames_plus), 32*4*(n_future_frames_plus), 32*8*(n_future_frames_plus)]
 
 numC_Trans = 64
-occ_encoder_input_channel = (numC_Trans+6)*3
+occ_encoder_input_channel = (numC_Trans+6)*time_receptive_field
 voxel_out_channel = 32*(n_future_frames_plus)
 flow_out_channel = 32*(n_future_frames_plus)
 voxel_out_channel_per_frame = 32
