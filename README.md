@@ -126,6 +126,8 @@ If you only want to test the performance of occupancy prediction for the present
 bash run_eval.sh $PATH_TO_CFG $PATH_TO_CKPT $GPU_NUM
 # e.g. bash run_eval.sh ./projects/configs/baselines/OCFNet_in_Cam4DOcc_V1.1.py ./work_dirs/OCFNet_in_Cam4DOcc_V1.1/epoch_20.pth  8
 ```
+Please set `save_pred` and `save_path` in the config files once saving prediction results is needed.
+
 `VPQ` evaluation of 3D instance prediction will be refined in the future.
 
 ### Visualization
