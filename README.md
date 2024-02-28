@@ -125,6 +125,16 @@ bash run_eval.sh $PATH_TO_CFG $PATH_TO_CKPT $GPU_NUM
 # e.g. bash run_eval.sh ./projects/configs/baselines/OCFNet_in_Cam4DOcc_V1.1.py ./work_dirs/OCFNet_in_Cam4DOcc_V1.1/epoch_20.pth  8
 ```
 
+### Visualization
+
+Set `show_time_change = True` if you want to show the changing state of occupancy in time intervals. 
+
+```bash
+cd viz
+python viz_gt.py
+```
+<img src="https://github.com/haomo-ai/Cam4DOcc/blob/main/viz_occupancy.png" width="100%"/>
+
 ### Basic information
 
 Some basic information as well as key parameters for our current version.
