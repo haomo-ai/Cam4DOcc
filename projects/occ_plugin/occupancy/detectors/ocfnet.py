@@ -6,6 +6,7 @@ from sys import api_version
 import torch
 import collections 
 import torch.nn.functional as F
+import os
 
 from mmdet.models import DETECTORS
 from mmcv.runner import auto_fp16, force_fp32
@@ -41,6 +42,8 @@ class OCFNet(BEVDepth):
             n_future_frames_plus=None,
             iou_thresh_for_vpq=None,
             record_time=False,
+            save_pred=False,
+            save_path=None,
             **kwargs):
         '''
         OCFNet is our end-to-end baseline for 4D camera-only occupancy forecasting
@@ -94,6 +97,8 @@ class OCFNet(BEVDepth):
         self.vehicles_id = 1
 
         self.test_present = test_present
+        self.save_pred = save_pred
+        self.save_path = save_path
 
     def image_encoder(self, img):
         imgs = img
@@ -623,7 +628,7 @@ class OCFNet(BEVDepth):
             pred_c = pred_c[self.eval_start_moment+1:, ...]
             gt_occ = gt_occ[self.eval_start_moment+1:, ...]
         
-        hist_for_iou = self.evaluate_occupancy_forecasting(pred_c, gt_occ,img_metas=img_metas)
+        hist_for_iou = self.evaluate_occupancy_forecasting(pred_c, gt_occ, img_metas=img_metas, save_pred=self.save_pred, save_path=self.save_path)
 
         test_output = {
             'hist_for_iou': hist_for_iou,
@@ -634,7 +639,7 @@ class OCFNet(BEVDepth):
         return test_output
 
 
-    def evaluate_occupancy_forecasting(self, pred, gt,img_metas=None):
+    def evaluate_occupancy_forecasting(self, pred, gt, img_metas=None, save_pred=False, save_path=None):
 
         B, H, W, D = gt.shape
         pred = F.interpolate(pred, size=[H, W, D], mode='trilinear', align_corners=False).contiguous()
@@ -660,6 +665,28 @@ class OCFNet(BEVDepth):
             hist_cur, iou_per_pred = fast_hist(pred_cur[noise_mask], gt_cur[noise_mask], max_label=self.max_label)
             hist_all = hist_all + hist_cur
             iou_per_pred_list.append(iou_per_pred)
+
+        # whether save prediction results
+        if save_pred:
+            if not os.path.exists(save_path):
+                os.mkdir(save_path)
+            pred_for_save_list = []
+            for k in range(B):
+                pred_for_save = torch.argmax(pred[k], dim=0).cpu()
+                x_grid = torch.linspace(0, H-1, H, dtype=torch.long)
+                x_grid = x_grid.view(H, 1, 1).expand(H, W, D)
+                y_grid = torch.linspace(0, W-1, W, dtype=torch.long)
+                y_grid = y_grid.view(1, W, 1).expand(H, W, D)
+                z_grid = torch.linspace(0, D-1, D, dtype=torch.long)
+                z_grid = z_grid.view(1, 1, D).expand(H, W, D)
+                segmentation_for_save = torch.stack((x_grid, y_grid, z_grid), -1)
+                segmentation_for_save = segmentation_for_save.view(-1, 3)
+                segmentation_label = pred_for_save.squeeze(0).view(-1,1)
+                segmentation_for_save = torch.cat((segmentation_for_save, segmentation_label), dim=-1) # N,4
+                kept = segmentation_for_save[:,-1]!=0
+                segmentation_for_save= segmentation_for_save[kept].cpu().numpy()
+                pred_for_save_list.append(segmentation_for_save)
+            np.savez(os.path.join(save_path, img_metas[0]["scene_token"]), pred_for_save_list)
 
         return hist_all
 

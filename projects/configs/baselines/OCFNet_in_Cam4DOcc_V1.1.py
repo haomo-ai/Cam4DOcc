@@ -37,6 +37,7 @@ time_receptive_field = 3
 n_future_frames = 4
 n_future_frames_plus = 6
 iou_thresh_for_vpq = 0.2
+test_present = False
 
 # Occupancy-related params ******************************************
 point_cloud_range = [-51.2, -51.2, -5.0, 51.2, 51.2, 3.0]
@@ -51,6 +52,10 @@ if use_separate_classes:
 else:
     num_cls = 2
 img_norm_cfg = None
+
+# Save params ******************************************
+save_pred = False
+save_path = "./data/cam4docc/results"
 
 # Data-generation and pipeline params ******************************************
 dataset_type = 'Cam4DOccDataset'
@@ -74,7 +79,6 @@ bda_aug_conf = dict(
             scale_lim=(0.95, 1.05),
             flip_dx_ratio=0.5,
             flip_dy_ratio=0.5)
-
 
 train_capacity = 23930 # default: use all sequences
 test_capacity = 5119 # default: use all sequences
@@ -178,8 +182,10 @@ model = dict(
     n_future_frames_plus=n_future_frames_plus,
     max_label=num_cls,
     iou_thresh_for_vpq=iou_thresh_for_vpq,
-    test_present=False,
+    test_present=test_present,
     record_time=False,
+    save_pred=save_pred,
+    save_path=save_path,
     img_backbone=dict(
         pretrained='torchvision://resnet50',
         type='ResNet',
