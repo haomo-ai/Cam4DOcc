@@ -127,6 +127,15 @@ bash run_eval.sh $PATH_TO_CFG $PATH_TO_CKPT $GPU_NUM
 
 ### Visualization
 
+Please install the dependencies as follows:
+
+```
+sudo apt-get install Xvfb
+pip install xvfbwrapper
+pip install mayavi
+```
+where `Xvfb` may be needed for visualization in your server.
+
 **Visualize ground-truth occupancy labels**. Set `show_time_change = True` if you want to show the changing state of occupancy in time intervals. 
 
 ```bash
