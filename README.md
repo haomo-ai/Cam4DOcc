@@ -127,6 +127,8 @@ bash run_eval.sh $PATH_TO_CFG $PATH_TO_CKPT $GPU_NUM
 
 ### Visualization
 
+* Visualize ground-truth occupancy labels
+
 Set `show_time_change = True` if you want to show the changing state of occupancy in time intervals. 
 
 ```bash
@@ -134,6 +136,12 @@ cd viz
 python viz_gt.py
 ```
 <img src="https://github.com/haomo-ai/Cam4DOcc/blob/main/viz_occupancy.png" width="100%"/>
+
+* Visualize occupancy forecasting results
+
+```bash
+coming soon ...
+```
 
 ### Basic information
 
