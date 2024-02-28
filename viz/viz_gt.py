@@ -8,7 +8,7 @@ from xvfbwrapper import Xvfb
 
 mlab.options.offscreen = True
 
-def viz_occ(occ, occ_mo, file_name, voxel_size,show_occ):
+def viz_occ(occ, occ_mo, file_name, voxel_size, show_occ, show_time_change):
 
     vdisplay = Xvfb(width=1, height=1)
     vdisplay.start()
@@ -34,7 +34,7 @@ def viz_occ(occ, occ_mo, file_name, voxel_size,show_occ):
             [152, 251, 152, 255],
             [152, 251, 152, 255],
         ]
-    ).astype(np.uint8)
+    ).astype(np.uint8)    
     plt_plot_occ.glyph.scale_mode = "scale_by_vector"
     plt_plot_occ.module_manager.scalar_lut_manager.lut.table = colors_occ
 
@@ -49,15 +49,30 @@ def viz_occ(occ, occ_mo, file_name, voxel_size,show_occ):
         opacity=0.9,
         vmin=1,
     )
-    colors_occ_mo = np.array(
-        [
-            [255, 70, 255, 255],
-            [255, 110, 255, 255],
-            [255, 150, 255, 255],
-            [255, 190, 255, 255],
-            [255, 250, 250, 255],
-        ]
-    ).astype(np.uint8)
+    if show_time_change:
+        colors_occ_mo = np.array(
+            [
+                [255, 70, 255, 255],
+                [255, 110, 255, 255],
+                [255, 150, 255, 255],
+                [255, 190, 255, 255],
+                [255, 250, 250, 255],
+            ]
+        ).astype(np.uint8)
+    else:
+        colors_occ_mo = np.array(
+            [
+                [220, 20, 60, 255],
+                [255, 127, 80, 255],
+                [0, 0, 230, 255],
+                [255, 158, 0, 255],
+                [233, 150, 70, 255],
+                [47, 79, 79, 255],
+                [255, 99, 71, 255],
+                [175, 0, 75, 255],
+                [255, 61, 99, 255],
+            ]
+        ).astype(np.uint8)    
     plt_plot_mov.glyph.scale_mode = "scale_by_vector"
     plt_plot_mov.module_manager.scalar_lut_manager.lut.table = colors_occ_mo
 
@@ -70,6 +85,7 @@ def viz_occ(occ, occ_mo, file_name, voxel_size,show_occ):
 
 def main():
 
+    show_time_change = True
 
     nuscocc_path = "../data/nuScenes-Occupancy/"
     cam4docc_path = "../data/cam4docc/GMO/segmentation/"
@@ -100,10 +116,11 @@ def main():
             gt_mo_cur = gt_mo_semantic[t]
             gt_mo_cur = np.array(gt_mo_cur)
             gt_mo_cur = gt_mo_cur[::2]
-            gt_mo_cur[:, -1] = int(t+1)
+            if show_time_change:
+                gt_mo_cur[:, -1] = int(t+1)
             gt_mo_semantic_to_draw = np.concatenate((gt_mo_semantic_to_draw, gt_mo_cur))
 
-        viz_occ(gt_occ_semantic_refine, gt_mo_semantic_to_draw, file_, voxel_size=0.2, show_occ=True)
+        viz_occ(gt_occ_semantic_refine, gt_mo_semantic_to_draw, file_, voxel_size=0.2, show_occ=True, show_time_change=show_time_change)
 
         index += 1
 
