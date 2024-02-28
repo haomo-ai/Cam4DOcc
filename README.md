@@ -99,9 +99,9 @@ Cam4DOcc
 ```
 ## Training and Evaluation
 
-We directly integrate the Cam4DOcc dataset generation pipeline into the dataloader, so you can directly run train or evaluate scripts and just wait :smirk:
+We directly integrate the Cam4DOcc dataset generation pipeline into the dataloader, so you can directly run training or evaluate scripts and just wait :smirk:
 
-Optionally, you can set `only_generate_dataset=True` in `Cam4DOcc/projects/configs/baselines/OCFNet_in_Cam4DOcc_V1.x.py` to only generate the Cam4DOcc data without model training and inference.
+Optionally, you can set `only_generate_dataset=True` in the [config files](https://github.com/haomo-ai/Cam4DOcc/tree/main/projects/configs/baselines) to only generate the Cam4DOcc data without model training and inference.
 
 ### Train OCFNetV1.1 with 8 GPUs
 
@@ -120,7 +120,7 @@ bash run.sh ./projects/configs/baselines/OCFNet_in_Cam4DOcc_V1.2.py 8
 
 ### Test OCFNet for different tasks
 
-If you only want to test the performance of occupancy prediction for the present frame (current observation), please set `test_present=True` in the config files. Otherwise, forecasting performance on the future interval is evaluated.
+If you only want to test the performance of occupancy prediction for the present frame (current observation), please set `test_present=True` in the [config files](https://github.com/haomo-ai/Cam4DOcc/tree/main/projects/configs/baselines). Otherwise, forecasting performance on the future interval is evaluated.
 
 ```bash
 bash run_eval.sh $PATH_TO_CFG $PATH_TO_CKPT $GPU_NUM
