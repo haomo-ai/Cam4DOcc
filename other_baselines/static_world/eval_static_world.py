@@ -6,7 +6,7 @@ from tqdm import trange
 # Setups =================================================================================================
 test_idx_dir = "../../data/cam4docc/test_ids/"
 test_results_dir = "../../data/cam4docc/results/"
-gt_dir = "../../data/cam4docc/segmentation/"
+gt_dir = "../../data/cam4docc/MMO/segmentation/"
 
 objects_max_label = 9
 
