@@ -88,9 +88,14 @@ Cam4DOcc
 │   │   ├── nuscenes_occ_infos_val.pkl/
 │   ├── nuScenes-Occupancy/
 │   ├── cam4docc
-│   │   ├── segmentation/
-│   │   ├── instance/
-│   │   ├── flow/
+│   │   ├── GMO/
+│   │   │   ├── segmentation/
+│   │   │   ├── instance/
+│   │   │   ├── flow/
+│   │   ├── MMO/
+│   │   │   ├── segmentation/
+│   │   │   ├── instance/
+│   │   │   ├── flow/
 ```
 ## Training and Evaluation
 
