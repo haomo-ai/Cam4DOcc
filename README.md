@@ -171,7 +171,9 @@ Some basic information as well as key parameters for our current version.
 | future frames | 4 | n_future_frames |
 | extension frames | 6 | n_future_frames_plus |
 
-Our proposed OCFNet can still perform well while being trained with partial data. Please try to decrease `train_capacity` if you want to explore more details with sparser supervision signals.
+Our proposed OCFNet can still perform well while being trained with partial data. Please try to decrease `train_capacity` if you want to explore more details with sparser supervision signals. 
+
+In addition, Please make sure that `n_future_frames_plus <= time_receptive_field + n_future_frames` because `n_future_frames_plus` means the real prediction number. We estimate more frames including the past ones rather than only `n_future_frames`.
 
 ## Other Baselines
 
