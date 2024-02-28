@@ -120,6 +120,8 @@ bash run.sh ./projects/configs/baselines/OCFNet_in_Cam4DOcc_V1.2.py 8
 
 ### Test OCFNet for different tasks
 
+If you only want to test the performance of occupancy prediction for the present frame (current observation), please set `test_present=True` in the config files. Otherwise, forecasting performance on the future interval is evaluated.
+
 ```bash
 bash run_eval.sh $PATH_TO_CFG $PATH_TO_CKPT $GPU_NUM
 # e.g. bash run_eval.sh ./projects/configs/baselines/OCFNet_in_Cam4DOcc_V1.1.py ./work_dirs/OCFNet_in_Cam4DOcc_V1.1/epoch_20.pth  8
