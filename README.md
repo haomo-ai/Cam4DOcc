@@ -123,6 +123,7 @@ OCFNetV1.2 can forecast inflated GMO including _bicycle_, _bus_, _car_, _constru
 ```bash
 bash run.sh ./projects/configs/baselines/OCFNet_in_Cam4DOcc_V1.2.py 8
 ```
+* The training/test process will be accelerated several times after you generate datasets by the first epoch.
 
 ### Test OCFNet for different tasks
 
