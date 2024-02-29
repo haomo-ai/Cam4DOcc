@@ -29,8 +29,8 @@ If you use Cam4DOcc in an academic work, please cite our paper:
 
 * Create a conda virtual environment and activate it
 ```bash
-conda create -n OpenOccupancy python=3.7 -y
-conda activate OpenOccupancy
+conda create -n cam4docc python=3.7 -y
+conda activate cam4docc
 ```
 * Install PyTorch and torchvision (tested on torch==1.10.1 & cuda=11.3)
 ```bash
