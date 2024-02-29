@@ -20,7 +20,11 @@ If you use Cam4DOcc in an academic work, please cite our paper:
 		year = 2024
 	}
  
+<details>
+
 ## Installation
+
+<summary>xxx</summary>
 
 We follow the installation instructions of our codebase [OpenOccupancy](https://github.com/JeffWang987/OpenOccupancy/blob/main/docs/install.md), which are also posted here:
 
@@ -66,6 +70,9 @@ cd Cam4DOcc
 export PYTHONPATH=“.”
 python setup.py develop
 ```
+
+</details>
+
 ## Data Structure
 
 Please link your [nuScenes V1.0 full dataset ](https://www.nuscenes.org/nuscenes#download) to the data folder. 
