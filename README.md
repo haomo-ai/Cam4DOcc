@@ -20,13 +20,12 @@ If you use Cam4DOcc in an academic work, please cite our paper:
 		year = 2024
 	}
  
-<details>
-
 ## Installation
 
-<summary>xxx</summary>
-
-We follow the installation instructions of our codebase [OpenOccupancy](https://github.com/JeffWang987/OpenOccupancy/blob/main/docs/install.md), which are also posted here:
+<details>
+	
+<summary>We follow the installation instructions of our codebase [OpenOccupancy](https://github.com/JeffWang987/OpenOccupancy/blob/main/docs/install.md), which are also posted here
+</summary>
 
 * Create a conda virtual environment and activate it
 ```bash
