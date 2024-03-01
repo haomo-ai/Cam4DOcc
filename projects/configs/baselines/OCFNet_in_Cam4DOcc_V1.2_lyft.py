@@ -27,7 +27,7 @@ train_ann_file = " "
 val_ann_file = " "
 
 cam4docc_dataset_path = "./data/cam4docc/"
-nusc_root = './data/nuscenes/'
+nusc_root = './data/lyft/'
 # GMO class names
 class_names = [
     'bicycle', 'bus', 'car', 'construction', 'motorcycle', 'trailer', 'truck', 'pedestrian'
