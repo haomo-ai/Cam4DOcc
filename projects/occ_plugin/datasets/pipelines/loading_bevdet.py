@@ -90,7 +90,7 @@ class LoadMultiViewImageFromFiles_BEVDet(object):
 
     def __init__(self, data_config, is_train=False, using_ego=True, colorjitter=False,
                  sequential=False, aligned=False, trans_only=True, img_norm_cfg=None,
-                 mmlabnorm=False, load_depth=False, depth_gt_path=None, test_mode=False, use_lyft=False):
+                 mmlabnorm=False, load_depth=False, depth_gt_path=None, data_root=None, test_mode=False, use_lyft=False):
         self.is_train = is_train
         self.data_config = data_config
         
@@ -105,6 +105,7 @@ class LoadMultiViewImageFromFiles_BEVDet(object):
         self.load_depth = load_depth
         
         self.depth_gt_path = depth_gt_path
+        self.data_root = data_root
         
         self.colorjitter = colorjitter
         self.pipeline_colorjitter = PhotoMetricDistortionMultiViewImage()
@@ -299,6 +300,8 @@ class LoadMultiViewImageFromFiles_BEVDet(object):
         else:
             cam_data = results['input_dict'][0]['curr']['cams'][cam_names[0]]
             filename = cam_data['data_path']
+            filename = os.path.join(self.data_root, filename.split('/')[-3], filename.split('/')[-2], filename.split('/')[-1])
+            
         img = Image.open(filename)
 
         img_augs = self.sample_augmentation(H=img.height,
@@ -340,6 +343,7 @@ class LoadMultiViewImageFromFiles_BEVDet(object):
                 else:
                     cam_data = input_dict_curr['curr']['cams'][cam_name]
                     filename = cam_data['data_path']
+                    filename = os.path.join(self.data_root, filename.split('/')[-3], filename.split('/')[-2], filename.split('/')[-1])
                 
                 img = Image.open(filename)
                 post_rot = torch.eye(2)
