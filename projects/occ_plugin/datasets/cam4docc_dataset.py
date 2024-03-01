@@ -18,8 +18,8 @@ import time
 
 @DATASETS.register_module()
 class Cam4DOccDataset(NuScenesDataset):
-    def __init__(self, occ_size, pc_range, occ_root, idx_root, time_receptive_field, n_future_frames, classes, use_separate_classes,
-                  train_capacity, test_capacity , **kwargs):
+    def __init__(self, occ_size, pc_range, occ_root, idx_root, ori_data_root, time_receptive_field, n_future_frames, classes, use_separate_classes,
+                  train_capacity, test_capacity, **kwargs):
         
         '''
         Cam4DOccDataset contains sequential occupancy states as well as instance flow for training occupancy forecasting models. We unify the related operations in the LiDAR coordinate system following OpenOccupancy.
@@ -58,6 +58,7 @@ class Cam4DOccDataset(NuScenesDataset):
         self.pc_range = pc_range
         self.occ_root = occ_root
         self.idx_root = idx_root
+        self.ori_data_root = ori_data_root
         self.classes = classes
         self.use_separate_classes = use_separate_classes
 
@@ -66,7 +67,7 @@ class Cam4DOccDataset(NuScenesDataset):
         self._set_group_flag()
 
         # load origin nusc dataset for instance annotation
-        self.nusc = NuScenes(version='v1.0-trainval', dataroot='/mnt/share_disk/dataset/nuscenes/data', verbose=False)
+        self.nusc = NuScenes(version='v1.0-trainval', dataroot='./data/nuscenes/', verbose=False)
         if self.test_mode:
             self.chosen_list = random.sample(range(0, self.test_capacity) , self.test_capacity)
             self.chosen_list_num = len(self.chosen_list)

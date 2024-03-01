@@ -295,7 +295,7 @@ class LoadMultiViewImageFromFiles_BEVDet(object):
         results['cam_names'] = cam_names
 
         if self.use_lyft:
-            filename = results['input_dict'][0]['img_filename'][0]+".jpg" ##  revising!!!
+            filename = results['input_dict'][0]['img_filename'][0]
         else:
             cam_data = results['input_dict'][0]['curr']['cams'][cam_names[0]]
             filename = cam_data['data_path']
@@ -336,7 +336,7 @@ class LoadMultiViewImageFromFiles_BEVDet(object):
             for cam_idx, cam_name in enumerate(cam_names):
                 if self.use_lyft:
                     cam_data = None
-                    filename = input_dict_curr['img_filename'][cam_idx]+".jpg" ##  revising!!!
+                    filename = input_dict_curr['img_filename'][cam_idx]
                 else:
                     cam_data = input_dict_curr['curr']['cams'][cam_name]
                     filename = cam_data['data_path']

@@ -21,7 +21,7 @@ import time
 
 @DATASETS.register_module()
 class Cam4DOccLyftDataset(Dataset):
-    def __init__(self, occ_size, pc_range, occ_root, idx_root, time_receptive_field, n_future_frames, classes, use_separate_classes,
+    def __init__(self, occ_size, pc_range, occ_root, idx_root, ori_data_root, time_receptive_field, n_future_frames, classes, use_separate_classes,
                   train_capacity, test_capacity, test_mode=False, pipeline=None, **kwargs):
         
         '''
@@ -81,14 +81,14 @@ class Cam4DOccLyftDataset(Dataset):
         self.pc_range = pc_range
         self.occ_root = occ_root
         self.idx_root = idx_root
+        self.ori_data_root = ori_data_root
         self.classes = classes
         self.use_separate_classes = use_separate_classes
 
         self.pipeline = Compose(pipeline)
 
         # load origin nusc dataset for instance annotation
-        self.lyft = LyftDataset(data_path='/tos://haomo-algorithms/c6089dc67ff976615510d22b5eaaaa4e/mjy/cam4docc/data/lyft/', 
-                                json_path='/tos://haomo-algorithms/c6089dc67ff976615510d22b5eaaaa4e/mjy/cam4docc/data/lyft/train_data', verbose=False)
+        self.lyft = LyftDataset(data_path='./data/lyft/', json_path='./data/lyft/train_data', verbose=False)
 
         self.scenes = self.get_scenes()
         self.ixes = self.get_samples()

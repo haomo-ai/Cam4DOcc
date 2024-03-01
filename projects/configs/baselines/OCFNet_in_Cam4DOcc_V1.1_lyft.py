@@ -1,6 +1,6 @@
 # Cam4DOcc: Benchmark for Camera-Only 4D Occupancy Forecasting in Autonomous Driving Applications
 # https://github.com/haomo-ai/Cam4DOcc
-# multiple classes: inflated multiple MO classes
+# 2 classes: inflated GMO and others
 
 # Basic params ******************************************
 _base_ = [
@@ -29,10 +29,8 @@ val_ann_file = " "
 cam4docc_dataset_path = "./data/cam4docc/"
 nusc_root = './data/nuscenes/'
 # GMO class names
-class_names = [
-    'bicycle', 'bus', 'car', 'construction', 'motorcycle', 'trailer', 'truck', 'pedestrian'
-]
-use_separate_classes = True
+class_names = ['vehicle', 'human']
+use_separate_classes = False
 use_fine_occ = False
 
 # Forecasting-related params ******************************************
@@ -84,7 +82,6 @@ bda_aug_conf = dict(
             scale_lim=(0.95, 1.05),
             flip_dx_ratio=0.5,
             flip_dy_ratio=0.5)
-
 
 train_capacity = 15720 # default: use all sequences
 test_capacity = 5880 # default: use all sequences
