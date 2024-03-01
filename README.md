@@ -61,6 +61,8 @@ pip install PyMCubes
 pip install spconv-cu113
 pip install fvcore
 pip install setuptools==59.5.0
+
+pip install lyft_dataset_sdk # for lyft dataset
 ```
 * Install occupancy pooling
 ```
@@ -74,9 +76,13 @@ python setup.py develop
 
 ## Data Structure
 
-Please link your [nuScenes V1.0 full dataset ](https://www.nuscenes.org/nuscenes#download) to the data folder. 
+### nuScenes dataset
+* Please link your [nuScenes V1.0 full dataset](https://www.nuscenes.org/nuscenes#download) to the data folder. 
+* [nuScenes-Occupancy](https://drive.google.com/file/d/1vTbgddMzUN6nLyWSsCZMb9KwihS7nPoH/view?usp=sharing), [nuscenes_occ_infos_train.pkl](https://github.com/JeffWang987/OpenOccupancy/releases/tag/train_pkl), and [nuscenes_occ_infos_val.pkl](https://github.com/JeffWang987/OpenOccupancy/releases/tag/val_pkl) are also provided by the previous work. If you only want to reproduce the forecasting results with "inflated" form, nuScenes dataset and Cam4DOcc are all you need.
 
-[nuScenes-Occupancy](https://drive.google.com/file/d/1vTbgddMzUN6nLyWSsCZMb9KwihS7nPoH/view?usp=sharing), [nuscenes_occ_infos_train.pkl](https://github.com/JeffWang987/OpenOccupancy/releases/tag/train_pkl), and [nuscenes_occ_infos_val.pkl](https://github.com/JeffWang987/OpenOccupancy/releases/tag/val_pkl) are also provided by the previous work. If you only want to reproduce the forecasting results with "inflated" form, nuScenes dataset and Cam4DOcc are all you need.
+### nuScenes dataset
+* Please link your [Lyft dataset](https://www.kaggle.com/c/3d-object-detection-for-autonomous-vehicles/data) to the data folder.
+* The required folders are listed below.
 
 Note that the folders under `cam4docc` will be generated automatically once you first run our training or evaluation scripts.
 
@@ -93,6 +99,10 @@ Cam4DOcc
 │   │   ├── nuscenes_occ_infos_train.pkl/
 │   │   ├── nuscenes_occ_infos_val.pkl/
 │   ├── nuScenes-Occupancy/
+│   ├── lyft/
+│   │   ├── maps/
+│   │   ├── train_data/
+│   │   ├── train_images/
 │   ├── cam4docc
 │   │   ├── GMO/
 │   │   │   ├── segmentation/
