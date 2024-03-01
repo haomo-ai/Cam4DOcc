@@ -80,7 +80,7 @@ python setup.py develop
 * Please link your [nuScenes V1.0 full dataset](https://www.nuscenes.org/nuscenes#download) to the data folder. 
 * [nuScenes-Occupancy](https://drive.google.com/file/d/1vTbgddMzUN6nLyWSsCZMb9KwihS7nPoH/view?usp=sharing), [nuscenes_occ_infos_train.pkl](https://github.com/JeffWang987/OpenOccupancy/releases/tag/train_pkl), and [nuscenes_occ_infos_val.pkl](https://github.com/JeffWang987/OpenOccupancy/releases/tag/val_pkl) are also provided by the previous work. If you only want to reproduce the forecasting results with "inflated" form, nuScenes dataset and Cam4DOcc are all you need.
 
-### nuScenes dataset
+### Lyft dataset
 * Please link your [Lyft dataset](https://www.kaggle.com/c/3d-object-detection-for-autonomous-vehicles/data) to the data folder.
 * The required folders are listed below.
 
@@ -96,13 +96,13 @@ Cam4DOcc
 │   │   ├── lidarseg/
 │   │   ├── v1.0-test/
 │   │   ├── v1.0-trainval/
-│   │   ├── nuscenes_occ_infos_train.pkl/
-│   │   ├── nuscenes_occ_infos_val.pkl/
+│   │   ├── nuscenes_occ_infos_train.pkl
+│   │   ├── nuscenes_occ_infos_val.pkl
 │   ├── nuScenes-Occupancy/
 │   ├── lyft/
 │   │   ├── maps/
 │   │   ├── train_data/
-│   │   ├── train_images/
+│   │   ├── images/   # from train images, containing xxx.jpeg
 │   ├── cam4docc
 │   │   ├── GMO/
 │   │   │   ├── segmentation/
@@ -112,6 +112,10 @@ Cam4DOcc
 │   │   │   ├── segmentation/
 │   │   │   ├── instance/
 │   │   │   ├── flow/
+│   │   ├── GMO_lyft/
+│   │   │   ├── ...
+│   │   ├── MMO_lyft/
+│   │   │   ├── ...
 ```
 ## Training and Evaluation
 
@@ -123,16 +127,33 @@ Optionally, you can set `only_generate_dataset=True` in the [config files](https
 
 OCFNetV1.1 can forecast inflated GMO and others. In this case, _vehicle_ and _human_ are considered as one unified category.
 
+For the nuScenes dataset, please run
+
 ```bash
 bash run.sh ./projects/configs/baselines/OCFNet_in_Cam4DOcc_V1.1.py 8
+```
+
+For the Lyft dataset, please run
+
+```bash
+bash run.sh ./projects/configs/baselines/OCFNet_in_Cam4DOcc_V1.1_lyft.py 8
 ```
 ### Train OCFNetV1.2 with 8 GPUs
 
 OCFNetV1.2 can forecast inflated GMO including _bicycle_, _bus_, _car_, _construction_, _motorcycle_, _trailer_, _truck_, _pedestrian_, and others. In this case, _vehicle_ and _human_ are divided into multiple categories for clearer evaluation on forecasting performance.
 
+For the nuScenes dataset, please run
+
 ```bash
 bash run.sh ./projects/configs/baselines/OCFNet_in_Cam4DOcc_V1.2.py 8
 ```
+
+For the Lyft dataset, please run
+
+```bash
+bash run.sh ./projects/configs/baselines/OCFNet_in_Cam4DOcc_V1.2_lyft.py 8
+```
+
 * The training/test process will be accelerated several times after you generate datasets by the first epoch.
 
 ### Test OCFNet for different tasks
