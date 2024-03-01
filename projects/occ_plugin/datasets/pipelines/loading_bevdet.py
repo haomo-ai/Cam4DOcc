@@ -90,7 +90,7 @@ class LoadMultiViewImageFromFiles_BEVDet(object):
 
     def __init__(self, data_config, is_train=False, using_ego=True, colorjitter=False,
                  sequential=False, aligned=False, trans_only=True, img_norm_cfg=None,
-                 mmlabnorm=False, load_depth=False, depth_gt_path=None, test_mode=False):
+                 mmlabnorm=False, load_depth=False, depth_gt_path=None, test_mode=False, use_lyft=False):
         self.is_train = is_train
         self.data_config = data_config
         
@@ -110,6 +110,8 @@ class LoadMultiViewImageFromFiles_BEVDet(object):
         self.pipeline_colorjitter = PhotoMetricDistortionMultiViewImage()
 
         self.test_mode = test_mode
+
+        self.use_lyft = use_lyft
 
     def get_rot(self,h):
         return torch.Tensor([
@@ -292,8 +294,11 @@ class LoadMultiViewImageFromFiles_BEVDet(object):
         cam_names = self.choose_cams()
         results['cam_names'] = cam_names
 
-        cam_data = results['input_dict'][0]['curr']['cams'][cam_names[0]]
-        filename = cam_data['data_path']
+        if self.use_lyft:
+            filename = results['input_dict'][0]['img_filename'][0]+".jpg" ##  revising!!!
+        else:
+            cam_data = results['input_dict'][0]['curr']['cams'][cam_names[0]]
+            filename = cam_data['data_path']
         img = Image.open(filename)
 
         img_augs = self.sample_augmentation(H=img.height,
@@ -328,15 +333,22 @@ class LoadMultiViewImageFromFiles_BEVDet(object):
             canvas = []
             sensor2sensors = []
 
-            for cam_name in cam_names:
-                cam_data = input_dict_curr['curr']['cams'][cam_name]
-                filename = cam_data['data_path']
+            for cam_idx, cam_name in enumerate(cam_names):
+                if self.use_lyft:
+                    cam_data = None
+                    filename = input_dict_curr['img_filename'][cam_idx]+".jpg" ##  revising!!!
+                else:
+                    cam_data = input_dict_curr['curr']['cams'][cam_name]
+                    filename = cam_data['data_path']
                 
                 img = Image.open(filename)
                 post_rot = torch.eye(2)
                 post_tran = torch.zeros(2)
 
-                intrin = torch.Tensor(cam_data['cam_intrinsic'])
+                if self.use_lyft:
+                    intrin = torch.Tensor(input_dict_curr['cam_intrinsics'][cam_idx])
+                else:
+                    intrin = torch.Tensor(cam_data['cam_intrinsic'])
                 
                 # from camera to lidar 
                 sensor2lidar = torch.tensor(input_dict_curr['lidar2cam_dic'][cam_name]).inverse().float()

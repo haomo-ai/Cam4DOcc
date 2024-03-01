@@ -12,7 +12,8 @@ import time
 
 @PIPELINES.register_module()
 class LoadInstanceWithFlow(object):
-    def __init__(self, cam4docc_dataset_path, grid_size=[512, 512, 40], pc_range=[-51.2, -51.2, -5.0, 51.2, 51.2, 3.0], background=0, use_flow=True, use_separate_classes=False):
+    def __init__(self, cam4docc_dataset_path, grid_size=[512, 512, 40], pc_range=[-51.2, -51.2, -5.0, 51.2, 51.2, 3.0], background=0, 
+                    use_flow=True, use_separate_classes=False, use_lyft=False):
         '''
         Loading sequential occupancy labels and instance flows for training and testing
 
@@ -38,6 +39,8 @@ class LoadInstanceWithFlow(object):
         self.background = background
         self.use_flow = use_flow
         self.use_separate_classes = use_separate_classes
+
+        self.use_lyft = use_lyft
 
     def get_poly_region(self, instance_annotation, present_egopose, present_ego2lidar):
         """
@@ -272,6 +275,8 @@ class LoadInstanceWithFlow(object):
         time_receptive_field = results['time_receptive_field']
 
         prefix = "MMO" if self.use_separate_classes else "GMO"
+        if self.use_lyft:
+            prefix = prefix + "_lyft"
 
         seg_label_dir = os.path.join(self.cam4docc_dataset_path, prefix, "segmentation")
         if not os.path.exists(seg_label_dir):
