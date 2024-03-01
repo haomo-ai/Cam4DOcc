@@ -117,6 +117,16 @@ Cam4DOcc
 │   │   ├── MMO_lyft/
 │   │   │   ├── ...
 ```
+Alternatively, you could modify the path parameters in the [config files](https://github.com/haomo-ai/Cam4DOcc/tree/main/projects/configs/baselines), which are also listed here:
+```
+occ_path = "./data/nuScenes-Occupancy"
+depth_gt_path = './data/depth_gt'
+train_ann_file = "./data/nuscenes/nuscenes_occ_infos_train.pkl"
+val_ann_file = "./data/nuscenes/nuscenes_occ_infos_val.pkl"
+cam4docc_dataset_path = "./data/cam4docc/"
+nusc_root = './data/nuscenes/'
+```
+
 ## Training and Evaluation
 
 We directly integrate the Cam4DOcc dataset generation pipeline into the dataloader, so you can directly run training or evaluate scripts and just wait :smirk:
