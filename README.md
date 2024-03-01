@@ -117,7 +117,7 @@ Cam4DOcc
 │   │   ├── MMO_lyft/
 │   │   │   ├── ...
 ```
-Alternatively, you could modify the path parameters in the [config files](https://github.com/haomo-ai/Cam4DOcc/tree/main/projects/configs/baselines), which are also listed here:
+Alternatively, you could manually modify the path parameters in the [config files](https://github.com/haomo-ai/Cam4DOcc/tree/main/projects/configs/baselines) instead of using the default data structure, which are also listed here:
 ```
 occ_path = "./data/nuScenes-Occupancy"
 depth_gt_path = './data/depth_gt'
@@ -221,7 +221,7 @@ Some basic information as well as key parameters for our current version.
 
 Our proposed OCFNet can still perform well while being trained with partial data. Please try to decrease `train_capacity` if you want to explore more details with sparser supervision signals. 
 
-In addition, Please make sure that `n_future_frames_plus <= time_receptive_field + n_future_frames` because `n_future_frames_plus` means the real prediction number. We estimate more frames including the past ones rather than only `n_future_frames`.
+In addition, please make sure that `n_future_frames_plus <= time_receptive_field + n_future_frames` because `n_future_frames_plus` means the real prediction number. We estimate more frames including the past ones rather than only `n_future_frames`.
 
 ## Other Baselines
 
