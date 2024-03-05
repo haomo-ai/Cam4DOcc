@@ -88,6 +88,17 @@ If you use our proposed baselines in your work, please cite as:
 	year = 2024
 }
 ```
+
+* OpenOccupancy
+```
+@article{wang2023openoccupancy,
+  title={Openoccupancy: A large scale benchmark for surrounding semantic occupancy perception},
+  author={Wang, Xiaofeng and Zhu, Zheng and Xu, Wenbo and Zhang, Yunpeng and Wei, Yi and Chi, Xu and Ye, Yun and Du, Dalong and Lu, Jiwen and Wang, Xingang},
+  journal={arXiv preprint arXiv:2303.03991},
+  year={2023}
+}
+```
+
 * PCPNet
 ```
 @ARTICLE{10141631,
