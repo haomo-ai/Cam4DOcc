@@ -75,6 +75,44 @@ We will provide our PowerBEV predictions soon and please open an issue [here](ht
 
 More refinement strategies for the baselines will be released ... Before that, please simply use the scripts here for fast evaluation.
 
+If you use our proposed baselines in your work, please cite as:
+
+* Cam4DOcc
+```
+@inproceedings{ma2024cvpr,
+	author = {Junyi Ma and Xieyuanli Chen and Jiawei Huang and Jingyi Xu and Zhen Luo and Jintao Xu and Weihao Gu and Rui Ai and Hesheng Wang},
+	title = {{Cam4DOcc: Benchmark for Camera-Only 4D Occupancy Forecasting in Autonomous Driving Applications}},
+	booktitle = {Proc.~of the IEEE/CVF Conf.~on Computer Vision and Pattern Recognition (CVPR)},
+	year = 2024
+}
+```
+* PCPNet
+```
+@ARTICLE{10141631,
+  author={Luo, Zhen and Ma, Junyi and Zhou, Zijie and Xiong, Guangming},
+  journal={IEEE Robotics and Automation Letters}, 
+  title={PCPNet: An Efficient and Semantic-Enhanced Transformer Network for Point Cloud Prediction}, 
+  year={2023},
+  volume={8},
+  number={7},
+  pages={4267-4274},
+  doi={10.1109/LRA.2023.3281937}}
+```
+* PowerBEV
+```
+@inproceedings{ijcai2023p120,
+  title     = {PowerBEV: A Powerful Yet Lightweight Framework for Instance Prediction in Bird’s-Eye View},
+  author    = {Li, Peizheng and Ding, Shuxiao and Chen, Xieyuanli and Hanselmann, Niklas and Cordts, Marius and Gall, Juergen},
+  booktitle = {Proceedings of the Thirty-Second International Joint Conference on
+               Artificial Intelligence, {IJCAI-23}},
+  pages     = {1080--1088},
+  year      = {2023},
+  month     = {8},
+  doi       = {10.24963/ijcai.2023/120},
+}
+```
+
+
 
 
 
