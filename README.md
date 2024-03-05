@@ -225,7 +225,7 @@ In addition, please make sure that `n_future_frames_plus <= time_receptive_field
 
 ## Other Baselines
 
-We will gradually update [other baselines](https://github.com/haomo-ai/Cam4DOcc/tree/main/other_baselines) in Cam4DOcc.
+We are gradually updating [other baselines](https://github.com/haomo-ai/Cam4DOcc/tree/main/other_baselines) in Cam4DOcc.
 
 ## TODO
 The tutorial is being updated ...
