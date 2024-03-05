@@ -75,6 +75,8 @@ We will provide our PowerBEV predictions soon and please open an issue [here](ht
 
 More refinement strategies for the baselines will be released ... Before that, please simply use the scripts here for fast evaluation.
 
+## Publications
+
 If you use our proposed baselines in your work, please cite as:
 
 * Cam4DOcc
