@@ -73,6 +73,8 @@ Cam4DOcc
 ```
 We will provide our PowerBEV predictions soon and please open an issue [here](https://github.com/EdwardLeeLPZ/PowerBEV) if you have questions about how PowerBEV is implemented for BEV-based instance prediction.
 
+More refinement strategies for the baselines will be released ... Before that, please simply use the scripts here for fast evaluation.
+
 
 
 
