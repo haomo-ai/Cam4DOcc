@@ -1,4 +1,4 @@
-## Static World
+## I. Static World
 
 The static world model is built based on the identity hypothesis.
 
@@ -11,7 +11,7 @@ python ./eval_static_world.py
 * **test_results_dir**: Path of occupancy prediction results. Here we simply set it to the path of OCFNet forecasting results and use the present occupancy prediction results for evaluation.
 * **gt_dir**: Path of ground-truth segmentations.
 
-##  Voxelization of PCP
+##  II. Voxelization of PCP
 
 Voxelization of point cloud prediction requires the outputs of [PCPNet](https://github.com/Blurryface0814/PCPNet). Here we use nuScenes-Occupancy as ground-truth since predicted points are limited by sparsity.
 ```bash
@@ -49,7 +49,7 @@ Cam4DOcc
 ```
 We will provide our PCPNet predictions soon and please open an issue [here](https://github.com/Blurryface0814/PCPNet) if you have questions about how PCPNet is implemented for points forecasting.
 
-## 2D-3D Lifted Prediction
+## III. 2D-3D Lifted Prediction
 
 2D-3D lifted prediction requires the outputs of [PowerBEV](https://github.com/EdwardLeeLPZ/PowerBEV). 
 
