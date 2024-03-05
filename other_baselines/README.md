@@ -71,7 +71,7 @@ Cam4DOcc
 │   │   │   ├── {scene_token}_{lidar_token}.npz
 │   │   │   ├── ...
 ```
-We will provide our PowerBEV predictions soon and please open an issue [here](https://github.com/EdwardLeeLPZ/PowerBEV) if you have questions about how PowerBEV is implemented for BEV-based instance prediction.
+We have provided our [PowerBEV predictions](https://drive.google.com/file/d/1X_N-GwU2ZB65UI9-EYpeQrb2BzS44VVX/view?usp=sharing) and please open an issue [here](https://github.com/EdwardLeeLPZ/PowerBEV) if you have questions about how PowerBEV is implemented for BEV-based instance prediction.
 
 More refinement strategies for the baselines will be released ... Before that, please simply use the scripts here for fast evaluation.
 
