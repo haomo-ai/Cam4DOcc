@@ -27,7 +27,7 @@ cam4docc_dataset_path = "./data/cam4docc/"
 nusc_root = './data/nuscenes/'
 # GMO class names
 class_names = [
-    'bicycle', 'bus', 'car', 'construction', 'motorcycle', 'trailer', 'truck', 'pedestrian'
+    'vehicle.bicycle', 'bus', 'car', 'construction', 'motorcycle', 'trailer', 'truck', 'pedestrian'
 ]
 use_separate_classes = True
 use_fine_occ = False

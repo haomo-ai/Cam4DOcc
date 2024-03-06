@@ -29,6 +29,7 @@ val_ann_file = " "
 cam4docc_dataset_path = "./data/cam4docc/"
 nusc_root = './data/lyft/'
 # GMO class names
+# refine the classes for lyft datasets according to your needs
 class_names = [
     'bicycle', 'bus', 'car', 'construction', 'motorcycle', 'trailer', 'truck', 'pedestrian'
 ]

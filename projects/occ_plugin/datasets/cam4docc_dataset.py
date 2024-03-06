@@ -186,7 +186,7 @@ class Cam4DOccDataset(NuScenesDataset):
             # Specify semantic id if use_separate_classes
             semantic_id = 1
             if self.use_separate_classes:
-                if 'bicycle' in annotation['category_name']:
+                if 'vehicle.bicycle' in annotation['category_name']: # rm static_object.bicycle_rack
                     semantic_id = 1
                 elif 'bus'  in annotation['category_name']:
                     semantic_id = 2
