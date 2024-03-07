@@ -223,6 +223,15 @@ Our proposed OCFNet can still perform well while being trained with partial data
 
 In addition, please make sure that `n_future_frames_plus <= time_receptive_field + n_future_frames` because `n_future_frames_plus` means the real prediction number. We estimate more frames including the past ones rather than only `n_future_frames`.
 
+## Pretrained Models
+
+Please download our pretrained models to resume training or reproduce results.
+
+| Version | Google Drive <img src="https://ssl.gstatic.com/docs/doclist/images/drive_2022q3_32dp.png" alt="Google Drive" width="18"/> | Baidu Cloud <img src="https://nd-static.bdstatic.com/m-static/v20-main/favicon-main.ico" alt="Baidu Yun" width="18"/> | Config |
+| :---: | :---: | :---: | :---: |
+| V1.1 | coming soon | coming soon | [OCFNet_in_Cam4DOcc_V1.1.py](https://github.com/haomo-ai/Cam4DOcc/blob/main/projects/configs/baselines/OCFNet_in_Cam4DOcc_V1.1.py) |
+| V1.2 | coming soon | coming soon | [OCFNet_in_Cam4DOcc_V1.2.py](https://github.com/haomo-ai/Cam4DOcc/blob/main/projects/configs/baselines/OCFNet_in_Cam4DOcc_V1.2.py) |
+
 ## Other Baselines
 
 We are gradually updating [other baselines](https://github.com/haomo-ai/Cam4DOcc/tree/main/other_baselines) in Cam4DOcc.
