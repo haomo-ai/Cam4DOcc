@@ -234,7 +234,7 @@ Please download our pretrained models to resume training or reproduce results.
 
 ## Other Baselines
 
-We are gradually updating [other baselines](https://github.com/haomo-ai/Cam4DOcc/tree/main/other_baselines) in Cam4DOcc.
+We also provide the evaluation on the forecasting performance of [other baselines](https://github.com/haomo-ai/Cam4DOcc/tree/main/other_baselines) in Cam4DOcc.
 
 ## TODO
 The tutorial is being updated ...
