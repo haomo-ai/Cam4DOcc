@@ -197,12 +197,15 @@ python viz_gt.py
 ```
 <img src="https://github.com/haomo-ai/Cam4DOcc/blob/main/viz_occupancy.png" width="100%"/>
 
-**Visualize occupancy forecasting results**.
+**Visualize occupancy forecasting results**. Set `show_time_change = True` if you want to show the changing state of occupancy in time intervals. 
 
 ```bash
-coming soon ...
+cd viz
+python viz_pred.py
 ```
 <img src="https://github.com/haomo-ai/Cam4DOcc/blob/main/viz_pred.png" width="100%"/>
+
+There is still room for improvement. Camera-only 4D occupancy forecasting remains challenging, especially for predicting over longer time intervals with many moving objects. We envision this benchmark as a valuable evaluation tool, and our OCFNet can serve as a foundational codebase for future research on 4D occupancy forecasting.
 
 ## Basic Information
 
