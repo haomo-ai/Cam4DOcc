@@ -202,6 +202,7 @@ python viz_gt.py
 ```bash
 coming soon ...
 ```
+<img src="https://github.com/haomo-ai/Cam4DOcc/blob/main/viz_pred.png" width="100%"/>
 
 ## Basic Information
 
