@@ -290,7 +290,7 @@ class OCFNet(BEVDepth):
         grid = grid[kept]
 
         warped_x =  torch.zeros_like(x, device=x.device) 
-        for i in range(transformed_grid.shape[1]):  
+        for i in range(transformed_grid.shape[0]):  
             current_batch = batch_ix[i]
             ixx = transformed_grid[i, 0]
             ixy = transformed_grid[i, 1]
