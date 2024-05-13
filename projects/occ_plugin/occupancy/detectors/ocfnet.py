@@ -290,17 +290,37 @@ class OCFNet(BEVDepth):
         grid = grid[kept]
 
         warped_x =  torch.zeros_like(x, device=x.device) 
-        for i in range(transformed_grid.shape[0]):  
-            current_batch = batch_ix[i]
-            ixx = transformed_grid[i, 0]
-            ixy = transformed_grid[i, 1]
-            ixz = transformed_grid[i, 2]
 
-            ixx_ori = grid[i, 0]
-            ixy_ori = grid[i, 1]
-            ixz_ori = grid[i, 2]
+
+        # hard coding for reducing memory usage
+        # erratum for new version
+        split_num = 32
+        gap = transformed_grid.shape[0]//split_num
+        for tt in range(split_num-1):
+            start_idx_tt = int(tt*gap)
+            end_idx_tt = int((tt+1)*gap)
+            current_batch = batch_ix[start_idx_tt:end_idx_tt]
+            ixx = transformed_grid[start_idx_tt:end_idx_tt, 0]
+            ixy = transformed_grid[start_idx_tt:end_idx_tt, 1]
+            ixz = transformed_grid[start_idx_tt:end_idx_tt, 2]
+
+            ixx_ori = grid[start_idx_tt:end_idx_tt, 0]
+            ixy_ori = grid[start_idx_tt:end_idx_tt, 1]
+            ixz_ori = grid[start_idx_tt:end_idx_tt, 2]
 
             warped_x[current_batch, :, ixx, ixy, ixz] = x[current_batch, :, ixx_ori, ixy_ori, ixz_ori]
+            
+        # for i in range(transformed_grid.shape[0]):  
+        #     current_batch = batch_ix[i]
+        #     ixx = transformed_grid[i, 0]
+        #     ixy = transformed_grid[i, 1]
+        #     ixz = transformed_grid[i, 2]
+
+        #     ixx_ori = grid[i, 0]
+        #     ixy_ori = grid[i, 1]
+        #     ixz_ori = grid[i, 2]
+
+        #     warped_x[current_batch, :, ixx, ixy, ixz] = x[current_batch, :, ixx_ori, ixy_ori, ixz_ori]
 
         return warped_x 
 
