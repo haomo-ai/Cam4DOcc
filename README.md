@@ -229,6 +229,9 @@ In addition, please make sure that `n_future_frames_plus <= time_receptive_field
 
 ## Pretrained Models
 
+We will provide our pretrained models of the erratum version. Your patience is appreciated.
+
+<!--
 Please download our pretrained models (for epoch=20) to resume training or reproduce results.
 
 | Version | Google Drive <img src="https://ssl.gstatic.com/docs/doclist/images/drive_2022q3_32dp.png" alt="Google Drive" width="18"/> | Baidu Cloud <img src="https://nd-static.bdstatic.com/m-static/v20-main/favicon-main.ico" alt="Baidu Yun" width="18"/> | Config |
@@ -236,6 +239,7 @@ Please download our pretrained models (for epoch=20) to resume training or repro
 | ~~V1.0~~ | ~~link~~ | ~~link~~ | ~~only vehicle~~ |
 | V1.1 | [link](https://drive.google.com/file/d/1IXRqOQk3RKpIjGgBBqV9D9vgSt58QDr8/view?usp=sharing) | [link](https://pan.baidu.com/s/18gODsVnBAXEJ4pzv2-LqGA?pwd=m99b) | [OCFNet_in_Cam4DOcc_V1.1.py](https://github.com/haomo-ai/Cam4DOcc/blob/main/projects/configs/baselines/OCFNet_in_Cam4DOcc_V1.1.py) |
 | V1.2 | [link](https://drive.google.com/file/d/1q1XnRt0wYE3oq6YBMBnagpGL7h2I46uN/view?usp=sharing) | [link](https://pan.baidu.com/s/1OPc1-a2McOO_0QPX63J7WQ?pwd=adic) | [OCFNet_in_Cam4DOcc_V1.2.py](https://github.com/haomo-ai/Cam4DOcc/blob/main/projects/configs/baselines/OCFNet_in_Cam4DOcc_V1.2.py) |
+-->
 
 ## Other Baselines
 
